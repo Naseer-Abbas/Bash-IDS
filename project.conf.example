@@ -1,0 +1,29 @@
+# Copy this file to project.conf and change any values you need.
+# project.conf must be owned by root (or you) and not writable by other users.
+
+# Log source: auto, journal, or a file path
+LOG_FILE="auto"
+
+# Events from one IP inside TIME_WINDOW seconds before an alert / a block
+ALERT_THRESHOLD=3
+BLOCK_THRESHOLD=5
+TIME_WINDOW=600
+
+# 1 = block with iptables, 0 = alert only
+ENABLE_BLOCKING=1
+
+# Email alerts (needs the "mail" command); leave empty to disable
+ALERT_EMAIL=""
+
+# Seconds between summary reports
+REPORT_INTERVAL=300
+
+# Where the IDS writes ids.log and blocked_ips.log
+STATE_DIR="/var/log/ids"
+
+# Matching is case-insensitive
+PATTERNS=("failed password" "authentication failure" "invalid user" "sql injection" "xss")
+HIGH_RISK_PATTERNS=("accepted password for root" "accepted publickey for root" "password changed" "new user:" "incorrect password attempts")
+
+# IPs that are never scored or blocked (this machine's own addresses are added automatically)
+IGNORE_IPS=("127.0.0.1")
